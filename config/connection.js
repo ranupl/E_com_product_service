@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
+require('dotenv').config({ path: './config/.env' });
 
 const connectDB = async () => {
   try {
-    await mongoose.connect('mongodb://localhost:27017/products_db');
+    await mongoose.connect(process.env.DBURL);
     console.log('MongoDB connected');
   } catch (err) {
     console.error('MongoDB connection error:', err);
@@ -11,3 +12,4 @@ const connectDB = async () => {
 };
 
 module.exports = connectDB;
+
